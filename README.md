@@ -75,8 +75,8 @@ and output directory of `/cdx/`, the following will be created:
 
 This is a map only job, and a single mapper is created per input file by default.
 
-The `pywb.warc.cdxindexer.write_cdx_index`, the same used by the pywb `cdx-indexer` app is used to create the index.
-Refer to `cdx-indexer -h` for list of possible options.
+The `pywb.warc.cdxindexer.write_cdx_index`, the same used by the pywb [cdxindexer](https://github.com/ikreymer/pywb/blob/master/pywb/warc/cdxindexer.py) app is used to create the index.
+Refer to `cdxindexer -h` for list of possible options.
 
 ### Sampling CDXs to Create Split File ###
 
@@ -176,12 +176,12 @@ This section contains a bit of background on the indexing formats used, and inde
 
 It is important to point out that these tools are intended specifically for bulk indexing.
 
-Creating an index of one or even a few WARC/ARC file is also easy and does not require any of this setup. The `cdx-indexer` application which comes with the [pywb](https://github.com/ikreymer/pywb) can do this via command line:
+Creating an index of one or even a few WARC/ARC file is also easy and does not require any of this setup. The `cdxindexer` application which comes with the [pywb](https://github.com/ikreymer/pywb) can do this via command line:
 
 For example:
 
 ```
-cdx-indexer -s output.cdx [input1.warc.gz] [/path/to/dir/]
+cdxindexer -s output.cdx [input1.warc.gz] [/path/to/dir/]
 ```
 This command will create a merged, sorted index `output.cdx` from files `input1.warc.gz` and all WARC/ARC files in directory `/path/to/dir/`. If the directory contains a few WARCs, this is probably the right approach to creating an index.
 
@@ -199,7 +199,7 @@ While there are no required fields, in practice, the following 6 fields
 are needed to identify a record: `url search key`, `url timestamp`, `original url`, `archive file`, `archive offset`, `archive length`. The search key is often the url transformed and 'canonicalized' in a way to make it easier for lexigraphic seaching.
 A common transformation is to reverse subdomains `example.com` -> `com,example,)/` to allow for searching by domain, then subdomains.
 
-The indexing job uses the flexible pywb `cdx-indexer` to create indexs of a certain format. However, the other jobs are compatible with any existing CDX format as well. Other indexing tools can be used also but require seperate integration.
+The indexing job uses the flexible pywb [cdxindexer](https://github.com/ikreymer/pywb/blob/master/pywb/warc/cdxindexer.py) to create indexs of a certain format. However, the other jobs are compatible with any existing CDX format as well. Other indexing tools can be used also but require seperate integration.
 
 ### ZipNum Sharded CDX Cluster
 
